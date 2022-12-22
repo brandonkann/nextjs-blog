@@ -159,3 +159,23 @@ https://nextjs.org/docs/basic-features/data-fetching/get-static-props#write-serv
     - Saving incoming data to your database
     - Securely Communicatng with a third-party-api
     - previewing draft content from your CMS 
+
+  
+  Develop, Preview, Ship: How to update and push code 
+  https://nextjs.org/learn/basics/deploying-nextjs-app/platform-details
+
+
+  branching with git:
+
+  - Use git branch- checks current branch 
+  - git checkout -b <name of the branch>
+  - git add . 
+  - git status 
+  - git commit -m "Added typescript dependencies"
+  - git status 
+  - git branch 
+  - git checkout main 
+  - git branch 
+  - git merge typescript-implementation
+  - git status
+  - git log 
