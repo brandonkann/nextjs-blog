@@ -24,6 +24,11 @@
     font-size: 1.2rem;
     line-height: 1.5;
   }
+
+
+  .background {
+    background-color: #4250ca;
+  }
   
   .borderCircle {
     border-radius: 100px;
