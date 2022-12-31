@@ -4,8 +4,8 @@ import utilStyles from '../styles/utils.module.css';
 import { getSortedPostsData } from '../lib/post';
 import Link from 'next/link';
 import Date from '../components/date';
-import { useState } from 'react';
-import { Card, CardMedia, Box, Typography, Stack, IconButton } from '@mui/material';
+import { useState, useRef, useEffect } from 'react';
+import { Card, CardMedia, Box, Typography, Stack, IconButton, Grid } from '@mui/material';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import FastForwardIcon from '@mui/icons-material/FastForward';
 import PauseIcon from '@mui/icons-material/Pause';
@@ -22,20 +22,35 @@ export async function getStaticProps() {
 }
 
 export default function Home( {allPostsData} ) {
+  const mp3Src = '/smalltownmusic.mp3'
+  const [music, setMusic] = useState({});
   const [paused, setPaused] = useState(false);
+  
+  useEffect(() => {
+    if (typeof Audio !== 'undefined' && mp3Src) {
+      const audio = new Audio(mp3Src);
+      setMusic(audio);
+    }
+  }, [mp3Src])
+
+  const musicHandler = () => {
+    console.log(paused)
+    setPaused((val) => !val)
+    paused ? music.pause() : music.play() ;
+  }
+
+  
   return (
-    <Layout home>
+  <>
+   
       <Head>
         <title>{siteTitle}</title>
         
       </Head>
-      <audio
-        controls
-        src="/smalltownmusic.mp3">
-            Your browser does not support the
-            <code>audio</code> element.
-    </audio>
-      <section>
+
+    <Grid container>
+    <Grid item xs={6}>
+    <section>
       <Card
   variant="outlined"
   sx={{
@@ -89,9 +104,9 @@ export default function Home( {allPostsData} ) {
       <IconButton
         aria-label={paused ? 'play' : 'pause'}
         sx={{ mx: 1 }}
-        onClick={() => setPaused((val) => !val)}
+        onClick={musicHandler}
       >
-        {paused ? <PlayArrowIcon /> : <PauseIcon />}
+        {paused ? <PauseIcon />  : <PlayArrowIcon />}
       </IconButton>
       <IconButton aria-label="fast forward" disabled>
         <FastForwardIcon />
@@ -101,9 +116,12 @@ export default function Home( {allPostsData} ) {
 </Card>
       </section>
 
-       
+    </Grid>
+
+    <Grid item xs={6}>
+    <Layout home>       
       <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
-        <h2 className={utilStyles.headingLg}>Recent Blog Post</h2>
+        <h2 className={utilStyles.headingLg}>My Recent Blog Post</h2>
         <ul className={utilStyles.list}>
           {allPostsData.map(({ id, date, title }) => (
             <li className={utilStyles.listItem} key={id}>
@@ -117,5 +135,12 @@ export default function Home( {allPostsData} ) {
         </ul>
       </section>
     </Layout>
+    </Grid>
+
+    </Grid>
+      
+
+     
+    </>
   );
 }
