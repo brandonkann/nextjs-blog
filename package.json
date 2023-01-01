@@ -10,6 +10,7 @@
     "@emotion/styled": "^11.10.5",
     "@mui/icons-material": "^5.11.0",
     "@mui/material": "^5.11.2",
+    "buttercms": "^1.2.9",
     "date-fns": "^2.29.3",
     "gray-matter": "^4.0.3",
     "next": "latest",

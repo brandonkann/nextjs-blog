@@ -53,7 +53,7 @@ function Navbar() {
                 About Me
               </Button>
               </Link>
-            <Link href="/blog" style={{textDecoration: 'none'}} passHref>
+            <Link href="/posts/page/1" style={{textDecoration: 'none'}} passHref>
             <Button
                 sx={{ my: 2, color: 'white', display: 'block' }}
               >

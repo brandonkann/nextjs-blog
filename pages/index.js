@@ -11,7 +11,6 @@ import FastForwardIcon from '@mui/icons-material/FastForward';
 import PauseIcon from '@mui/icons-material/Pause';
 import FastRewindIcon from '@mui/icons-material/FastRewind';
 
-
 export async function getStaticProps() {
   const allPostsData = getSortedPostsData();
   return {
