@@ -10,6 +10,11 @@ import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import FastForwardIcon from '@mui/icons-material/FastForward';
 import PauseIcon from '@mui/icons-material/Pause';
 import FastRewindIcon from '@mui/icons-material/FastRewind';
+import Image from 'next/image';
+
+import Button from '@mui/material';
+import { borderRadius } from '@mui/system';
+
 
 export async function getStaticProps() {
   const allPostsData = getSortedPostsData();
@@ -47,14 +52,117 @@ export default function Home( {allPostsData} ) {
         
       </Head>
 
-    <Grid container>
+    <Grid container sx={{ alignSelf: 'center'}}>
     <Grid item xs={6}>
-    <section>
+      <Box sx={{ alignSelf: 'center', m: { xs: 2, sm: 3 } }}>
+        <Grid container>
+
+          <Grid item xs={8}>
+          <h1>Brandon Kan</h1>
+        <p>Microsoft CRM Consultant at Deloitte</p>
+
+        <p>Helping Microsoft developer build faster CRM. Teaching about PCFs, D365 best preactices, and more!</p>
+
+
+
+          </Grid>
+
+          <Grid item sx={{ alignSelf:'center'}}>
+          <Image
+              priority
+              src="/images/profile.jpg"
+              className={utilStyles.borderCircle}
+              width='115'
+              height='115'
+              alt=""
+            />
+          </Grid>
+
+
+        </Grid>
+
+<h2>Featured Posts</h2>
+        <Grid container spacing= {2}>
+
+<Grid item xs={4}>
+<Card variant="outlined" sx={{ height: 200, borderRadius:2, alignSelf:'center' }}>
+      <Typography level="h2" fontSize="md" sx={{ m: 0.5, justifyContent:'center' }}>
+        How to enable your workstation for PCF Development
+      </Typography>
+    
+    
+    
+    </Card>
+
+</Grid>
+<Grid item xs={4}>
+ <Card variant="outlined" sx={{ height: 200, borderRadius:2 }}>
+      <Typography level="h2" fontSize="md" sx={{ mb: 0.5 }}>
+        TODO
+      </Typography>
+  
+   
+       
+
+    
+    </Card>
+
+
+
+</Grid>
+<Grid item xs={4}>
+
+<Card variant="outlined" sx={{ height: 200, borderRadius:2 }}>
+      <Typography level="h2" fontSize="md" sx={{ mb: 0.5 }}>
+        TODO
+      </Typography>
+  
+      
+    
+    </Card>
+
+
+
+</Grid>
+
+</Grid>
+
+
+
+      
+    
+    
+
+
+    
+      </Box>
+    </Grid>
+
+    <Grid item xs={6}>
+    <Layout home>       
+      <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
+        <h2 className={utilStyles.headingLg}>My Recent Blog Post</h2>
+        <ul className={utilStyles.list}>
+          {allPostsData.map(({ id, date, title }) => (
+            <li className={utilStyles.listItem} key={id}>
+            <Link href={`/posts/${id}`}>{title}</Link>
+            <br />
+            <small className={utilStyles.lightText}>
+              <Date dateString={date} />
+            </small>
+          </li>
+          ))}
+        </ul>
+      </section>
+
+
+      <Link href="/posts/page/1">Read All posts</Link>
+      <section>
       <Card
   variant="outlined"
   sx={{
-    p: 1,
-    display: 'flex',
+    p: 2,
+    display: 'inline-block',
     flexDirection: { xs: 'column', sm: 'row' },
   }}
 >
@@ -114,26 +222,9 @@ export default function Home( {allPostsData} ) {
   </Box>
 </Card>
       </section>
-
-    </Grid>
-
-    <Grid item xs={6}>
-    <Layout home>       
-      <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
-        <h2 className={utilStyles.headingLg}>My Recent Blog Post</h2>
-        <ul className={utilStyles.list}>
-          {allPostsData.map(({ id, date, title }) => (
-            <li className={utilStyles.listItem} key={id}>
-            <Link href={`/posts/${id}`}>{title}</Link>
-            <br />
-            <small className={utilStyles.lightText}>
-              <Date dateString={date} />
-            </small>
-          </li>
-          ))}
-        </ul>
-      </section>
     </Layout>
+
+  
     </Grid>
 
     </Grid>

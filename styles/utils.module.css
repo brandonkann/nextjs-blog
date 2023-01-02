@@ -55,3 +55,11 @@
   .lightText {
     color: #666;
   }
+
+  .cardMedia {
+    padding-Top: '81.25%';
+    border-radius: '50%';
+    margin: '28px'
+  }
+
+  @import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500,700');
