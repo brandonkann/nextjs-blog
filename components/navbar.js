@@ -29,7 +29,6 @@ function Navbar() {
             variant="h5"
             noWrap
             component="a"
-            href="/"
             sx={{
               mr: 2,
               display: { xs: 'flex', md: 'flex' },
@@ -45,6 +44,12 @@ function Navbar() {
 
     
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'flex' } }}>
+
+            <Link href="/" style={{textDecoration: 'none'}} passHref>
+              <Button sx = {{my: 2, color: 'white', display: 'block'}}>
+                Home
+              </Button>
+            </Link>
             
             <Link href="/aboutme" style={{textDecoration: 'none'}} passHref>
               <Button
